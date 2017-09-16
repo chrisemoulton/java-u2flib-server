@@ -56,7 +56,12 @@ public class WebAuthnResource {
     private final Multimap<String, CredentialRegistration> userStorage = HashMultimap.create();
     private final InMemoryCredentialRepository credentialRepository = new InMemoryCredentialRepository();
 
-    private final ChallengeGenerator challengeGenerator = new RandomChallengeGenerator();
+    private final ChallengeGenerator challengeGenerator = new ChallengeGenerator() {
+        @Override
+        public byte[] generateChallenge() {
+            return U2fB64Encoding.decode("CONSTANT_CHALLENGE");
+        }
+    };
 
     private final MetadataService metadataService = new MetadataService();
 
