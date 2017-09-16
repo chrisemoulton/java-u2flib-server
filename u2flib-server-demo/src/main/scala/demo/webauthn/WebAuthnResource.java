@@ -59,7 +59,7 @@ public class WebAuthnResource {
     private final ChallengeGenerator challengeGenerator = new ChallengeGenerator() {
         @Override
         public byte[] generateChallenge() {
-            return U2fB64Encoding.decode("CONSTANT_CHALLENGE");
+            return U2fB64Encoding.decode("CONSTANT");
         }
     };
 
