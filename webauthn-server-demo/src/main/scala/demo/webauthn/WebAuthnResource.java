@@ -34,6 +34,7 @@ import java.security.cert.CertificateException;
 import java.time.Clock;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,7 +48,7 @@ public class WebAuthnResource {
 
     private static final Logger logger = LoggerFactory.getLogger(WebAuthnResource.class);
 
-    public static final String ORIGIN = "https://localhost:8443";
+    public static final List<String> ORIGINS = Arrays.asList("https://localhost:8443", "https://35.198.142.135", "https://webauthn.demo.yubico.com");
 
     private final Map<String, AssertionRequest> assertRequestStorage = new HashMap<String, AssertionRequest>();
     private final Map<String, RegistrationRequest> registerRequestStorage = new HashMap<String, RegistrationRequest>();
@@ -63,13 +64,13 @@ public class WebAuthnResource {
 
 
     private final RelyingParty rp = new RelyingParty(
-        new RelyingPartyIdentity("Yubico WebAuthn demo", "localhost", Optional.empty()),
+        new RelyingPartyIdentity("Yubico WebAuthn demo", "webauthn.demo.yubico.com", Optional.empty()),
         challengeGenerator,
         Arrays.asList(
             new PublicKeyCredentialParameters(-7L, PublicKey$.MODULE$),
             new PublicKeyCredentialParameters("ES256", PublicKey$.MODULE$) // TODO remove ES256
         ),
-        Arrays.asList(ORIGIN),
+        ORIGINS,
         Optional.empty(),
         new BouncyCastleCrypto(),
         true,

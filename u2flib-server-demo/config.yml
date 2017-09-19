@@ -1,8 +1,8 @@
 server:
   applicationConnectors:
     - type: https
-      port: 8443
-      keyStorePath: keystore.jks
+      port: 443
+      keyStorePath: webauthn-demo.p12
       keyStorePassword: p@ssw0rd
       validateCerts: false
   adminConnectors:

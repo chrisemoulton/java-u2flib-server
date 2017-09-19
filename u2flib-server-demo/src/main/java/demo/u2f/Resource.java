@@ -38,7 +38,7 @@ import java.util.Map;
 @Produces(MediaType.TEXT_HTML)
 public class Resource {
 
-    public static final String APP_ID = "https://localhost:8443";
+    public static final String APP_ID = "https://webauthn.demo.yubico.com";
 
     private final Map<String, String> requestStorage = new HashMap<String, String>();
     private final LoadingCache<String, Map<String, String>> userStorage = CacheBuilder.newBuilder().build(new CacheLoader<String, Map<String, String>>() {
