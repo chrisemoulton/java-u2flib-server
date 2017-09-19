@@ -48,7 +48,7 @@ public class WebAuthnResource {
 
     private static final Logger logger = LoggerFactory.getLogger(WebAuthnResource.class);
 
-    public static final List<String> ORIGINS = Arrays.asList("https://localhost:8443", "https://35.198.142.135", "https://webauthn.demo.yubico.com");
+    public static final List<String> ORIGINS = Arrays.asList("https://localhost:8443", "https://35.198.142.135", "https://webauthn.demo.yubico.com", "webauthn.demo.yubico.com");
 
     private final Map<String, AssertionRequest> assertRequestStorage = new HashMap<String, AssertionRequest>();
     private final Map<String, RegistrationRequest> registerRequestStorage = new HashMap<String, RegistrationRequest>();
